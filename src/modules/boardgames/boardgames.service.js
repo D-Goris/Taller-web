@@ -7,6 +7,13 @@ boardgamesService.getBoardgames = () => {
     return boardgames;
 }
 
+boardgamesService.getBoardgame = (id) => {
+    for (let boardgame of boardgames) {
+        if (boardgame.id === parseInt(id)) return boardgame;
+    }
+    return null;
+}
+
 boardgamesService.addBoardgames = (name, minPlayer, maxPlayer, duration, date, status)=>{
     const newBoardgame = {
         id          :   contadorID,

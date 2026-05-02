@@ -9,6 +9,23 @@ boardgamesController.getBoardgames = (req, res) => {
     })
 }
 
+boardgamesController.getBoardgame = (req, res) => {
+    const idBoardGame = req.params.idBoardgame;
+
+    const boardgame = boardgamesService.getBoardgame(idBoardGame);
+
+    if(boardgame!=null){
+        res.status(200).send ({
+            boardgame: boardgame
+        })
+    }else{
+        res.status(404).send ({
+            boardgame: boardgame
+        })
+    }
+    
+}
+
 boardgamesController.addBoardgames = (req, res)=>{
     const name= req.body.name;
     const minPlayer= req.body.minPlayer;
