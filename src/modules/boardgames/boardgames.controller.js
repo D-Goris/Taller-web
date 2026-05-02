@@ -37,9 +37,32 @@ boardgamesController.addBoardgames = (req, res)=>{
     const boardgames = boardgamesService.addBoardgames(name, minPlayer, maxPlayer, duration, date, status);
 
     res.status(201).send({
-        msg: "Creado", 
         boardgames:boardgames
     })
 } 
+
+boardgamesController.putBoardgame = (req, res) => {
+    const idBoardGame = req.params.idBoardgame;
+    const name= req.body.name;
+    const minPlayer= req.body.minPlayer;
+    const maxPlayer= req.body.maxPlayer;
+    const duration= req.body.duration;
+    const date= req.body.date;
+    const status= req.body.status;
+
+    const boardgame = boardgamesService.putBoardgame(idBoardGame, name, minPlayer, maxPlayer, duration, date, status);
+
+
+    if(boardgame!=null){
+        res.status(200).send ({
+            boardgame: boardgame
+        })
+    }else{
+        res.status(404).send ({
+            boardgame: boardgame
+        })
+    }
+}
+
 
 export default boardgamesController;

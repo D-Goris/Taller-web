@@ -29,4 +29,25 @@ boardgamesService.addBoardgames = (name, minPlayer, maxPlayer, duration, date, s
     return newBoardgame;
 }
 
+boardgamesService.putBoardgame = (idBoardGame, name, minPlayer, maxPlayer, duration, date, status) => {
+    const newBoardgame = {
+        id          :   parseInt(idBoardGame),
+        name        :   name,
+        minPlayer   :   minPlayer,
+        maxPlayer   :   maxPlayer,
+        duration    :   duration,
+        date        :   date,
+        status      :   status
+    }
+
+    for ( let boardgame of boardgames){
+        if ( boardgame.id === parseInt(idBoardGame) ) {
+            let indice = boardgames.indexOf(boardgame);
+            boardgames[indice]=newBoardgame
+            return newBoardgame;
+        } 
+    }
+    return null;
+}
+
 export default boardgamesService;
