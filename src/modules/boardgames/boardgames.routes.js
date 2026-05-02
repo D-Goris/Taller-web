@@ -6,8 +6,9 @@ const boardgamesRouter = Router();
 
 boardgamesRouter.get("/" , boardgamesController.getBoardgames)
 boardgamesRouter.get("/:idBoardgame", boardgamesController.getBoardgame)
-boardgamesRouter.post("/", boardgamesController.addBoardgames)
+boardgamesRouter.post("/", boardgamesController.addBoardgame)
 boardgamesRouter.put("/:idBoardgame", boardgamesController.putBoardgame)
+boardgamesRouter.patch("/:idBoardgame", boardgamesController.patchBoardgame)
 boardgamesRouter.delete("/:idBoardgame", boardgamesController.deleteBoardgame)
 
 export default boardgamesRouter;

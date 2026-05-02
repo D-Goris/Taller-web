@@ -14,7 +14,7 @@ boardgamesService.getBoardgame = (idBoardGame) => {
     return null;
 }
 
-boardgamesService.addBoardgames = (name, minPlayer, maxPlayer, duration, date, status)=>{
+boardgamesService.addBoardgame = (name, minPlayer, maxPlayer, duration, date, status)=>{
     const newBoardgame = {
         id          :   contadorID,
         name        :   name,
@@ -46,6 +46,16 @@ boardgamesService.putBoardgame = (idBoardGame, name, minPlayer, maxPlayer, durat
             boardgames[indice]=newBoardgame
             return newBoardgame;
         } 
+    }
+    return null;
+}
+
+boardgamesService.patchBoardgame = (idBoardGame, newBoardgame) =>{
+    for (let boardgame of boardgames) {
+        if (boardgame.id === parseInt(idBoardGame)){
+            let indice = boardgames.indexOf(boardgame);
+            return boardgames[indice] = { ...boardgames[indice], ...newBoardgame };
+        }
     }
     return null;
 }

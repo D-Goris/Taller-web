@@ -10,9 +10,9 @@ boardgamesController.getBoardgames = (req, res) => {
 }
 
 boardgamesController.getBoardgame = (req, res) => {
-    const idBoardGame = req.params.idBoardgame;
+    const idBoardgame = req.params.idBoardgame;
 
-    const boardgame = boardgamesService.getBoardgame(idBoardGame);
+    const boardgame = boardgamesService.getBoardgame(idBoardgame);
 
     if(boardgame!=null){
         res.status(200).send ({
@@ -26,7 +26,7 @@ boardgamesController.getBoardgame = (req, res) => {
     
 }
 
-boardgamesController.addBoardgames = (req, res)=>{
+boardgamesController.addBoardgame = (req, res)=>{
     const name= req.body.name;
     const minPlayer= req.body.minPlayer;
     const maxPlayer= req.body.maxPlayer;
@@ -34,15 +34,15 @@ boardgamesController.addBoardgames = (req, res)=>{
     const date= req.body.date;
     const status= req.body.status;
 
-    const boardgames = boardgamesService.addBoardgames(name, minPlayer, maxPlayer, duration, date, status);
+    const boardgame = boardgamesService.addBoardgame(name, minPlayer, maxPlayer, duration, date, status);
 
     res.status(201).send({
-        boardgames:boardgames
+        boardgame:boardgame
     })
 } 
 
 boardgamesController.putBoardgame = (req, res) => {
-    const idBoardGame = req.params.idBoardgame;
+    const idBoardgame = req.params.idBoardgame;
     const name= req.body.name;
     const minPlayer= req.body.minPlayer;
     const maxPlayer= req.body.maxPlayer;
@@ -50,7 +50,7 @@ boardgamesController.putBoardgame = (req, res) => {
     const date= req.body.date;
     const status= req.body.status;
 
-    const boardgame = boardgamesService.putBoardgame(idBoardGame, name, minPlayer, maxPlayer, duration, date, status);
+    const boardgame = boardgamesService.putBoardgame(idBoardgame, name, minPlayer, maxPlayer, duration, date, status);
 
 
     if(boardgame!=null){
@@ -64,18 +64,35 @@ boardgamesController.putBoardgame = (req, res) => {
     }
 }
 
-boardgamesController.deleteBoardgame = (req,res) => {
-    const idBoardGame = req.params.idBoardgame;
+boardgamesController.patchBoardgame = (req, res) => {
+    const idBoardgame = req.params.idBoardgame;
+    const newBoardgame = req.body;
 
-    const boardgameDeleted = boardgamesService.deleteBoardgame(idBoardGame);
+    const boardgame=boardgamesService.patchBoardgame(idBoardgame, newBoardgame);
 
-    if(boardgameDeleted!=null){
+    if(boardgame!=null){
         res.status(200).send ({
-            boardgame: boardgameDeleted
+            boardgame: boardgame
         })
     }else{
         res.status(404).send ({
-            boardgame: boardgameDeleted
+            boardgame: boardgame
+        })
+    }
+}
+
+boardgamesController.deleteBoardgame = (req,res) => {
+    const idBoardgame = req.params.idBoardgame;
+
+    const boardgame = boardgamesService.deleteBoardgame(idBoardgame);
+
+    if(boardgame!=null){
+        res.status(200).send ({
+            boardgame: boardgame
+        })
+    }else{
+        res.status(404).send ({
+            boardgame: boardgame
         })
     }
 }
