@@ -2,11 +2,27 @@ import boardgamesService from './boardgames.service.js';
 
 const boardgamesController = {};
 
-boardgamesController.getBoardgames= (req, res) => {
+boardgamesController.getBoardgames = (req, res) => {
     const boardgames = boardgamesService.getBoardgames();
     res.status(200).send ({
         boardgames: boardgames
     })
 }
+
+boardgamesController.addBoardgames = (req, res)=>{
+    const name= req.body.name;
+    const minPlayer= req.body.minPlayer;
+    const maxPlayer= req.body.maxPlayer;
+    const duration= req.body.duration;
+    const date= req.body.date;
+    const status= req.body.status;
+
+    const boardgames = boardgamesService.addBoardgames(name, minPlayer, maxPlayer, duration, date, status);
+
+    res.status(201).send({
+        msg: "Creado", 
+        boardgames:boardgames
+    })
+} 
 
 export default boardgamesController;
