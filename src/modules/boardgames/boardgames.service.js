@@ -7,9 +7,9 @@ boardgamesService.getBoardgames = () => {
     return boardgames;
 }
 
-boardgamesService.getBoardgame = (id) => {
+boardgamesService.getBoardgame = (idBoardGame) => {
     for (let boardgame of boardgames) {
-        if (boardgame.id === parseInt(id)) return boardgame;
+        if (boardgame.id === parseInt(idBoardGame)) return boardgame;
     }
     return null;
 }
@@ -46,6 +46,16 @@ boardgamesService.putBoardgame = (idBoardGame, name, minPlayer, maxPlayer, durat
             boardgames[indice]=newBoardgame
             return newBoardgame;
         } 
+    }
+    return null;
+}
+
+boardgamesService.deleteBoardgame = (idBoardGame) =>{
+    for (let boardgame of boardgames) {
+        if (boardgame.id === parseInt(idBoardGame)){
+            let indice = boardgames.indexOf(boardgame);
+            return boardgames.splice(indice,indice);
+        }
     }
     return null;
 }

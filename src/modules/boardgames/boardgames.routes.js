@@ -8,5 +8,6 @@ boardgamesRouter.get("/" , boardgamesController.getBoardgames)
 boardgamesRouter.get("/:idBoardgame", boardgamesController.getBoardgame)
 boardgamesRouter.post("/", boardgamesController.addBoardgames)
 boardgamesRouter.put("/:idBoardgame", boardgamesController.putBoardgame)
+boardgamesRouter.delete("/:idBoardgame", boardgamesController.deleteBoardgame)
 
 export default boardgamesRouter;

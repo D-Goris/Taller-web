@@ -64,5 +64,20 @@ boardgamesController.putBoardgame = (req, res) => {
     }
 }
 
+boardgamesController.deleteBoardgame = (req,res) => {
+    const idBoardGame = req.params.idBoardgame;
+
+    const boardgameDeleted = boardgamesService.deleteBoardgame(idBoardGame);
+
+    if(boardgameDeleted!=null){
+        res.status(200).send ({
+            boardgame: boardgameDeleted
+        })
+    }else{
+        res.status(404).send ({
+            boardgame: boardgameDeleted
+        })
+    }
+}
 
 export default boardgamesController;
