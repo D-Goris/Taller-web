@@ -64,7 +64,7 @@ boardgamesService.deleteBoardgame = (idBoardGame) =>{
     for (let boardgame of boardgames) {
         if (boardgame.id === parseInt(idBoardGame)){
             let indice = boardgames.indexOf(boardgame);
-            return boardgames.splice(indice,indice);
+            return boardgames.splice(indice,1);
         }
     }
     return null;
